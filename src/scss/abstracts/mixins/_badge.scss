@@ -1,0 +1,24 @@
+@use "../../base/variables" as *;
+
+@mixin badge($state, $device) {
+  $color: badgeColor($state);
+  @if $device == mobile {
+    font-size: 12px;
+    background-color: $color;
+  } @else {
+    font-size: 18px;
+    background-color: $color;
+  }
+}
+
+@function badgeColor($state) {
+  $bgColor: null;
+  @if $state == live {
+    $bgColor: red;
+  } @else if $state == day {
+    $bgColor: blue;
+  } @else if $state == 후원 {
+    $bgColor: purple;
+  }
+  @return $bgColor;
+}
