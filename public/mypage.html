@@ -126,55 +126,71 @@
       class="icon icon--arrow before__button"
     ></button>
 
-    <!-- section 태그 시작 -->
-    <section class="section mypage">
-      <!-- heading을 뭘로 줘야할까? -->
-      <figure>
-        <div>
+    <!-- 
+      - section 안에 section이 중첩되어 있을 필요가 없을 것 같아 <main>으로 변경하였습니다. 
+      - section 메인에서 주로 사용하는 section 태그와는 디자인 구조가 달라서 .section 삭제했습니다.
+    -->
+    <main class="mypage">
+      <!-- 페이지 제목은 여기에 넣어도 좋을 것 같아서 caption 안에 있던 내용의 위치를 이동했어요. -->
+      <h2 class="a11yHidden">마이 페이지</h2>
+      <!-- 클래스명 추가 .mypage__figure -->
+      <figure class="mypage__figure">
+        <!-- 클래스명 추가 .mypage__img -->
+        <div class="mypage__img">
           <img src="./assets/images/onairs/profiles/1.png" alt="" />
         </div>
-        <figcaption class="caption userInfo">
-          <h2 class="a11yHidden">사용자 정보</h2>
+        <figcaption class="mypage__caption">
+          <!-- 아래 .card 영역에 .caption이 있는 것을 감안하여 channel 페이지의 구조와 유사하게 클래스명을 변경하였습니다. -->
           <dl class="userInfo__list">
-            <div class="userInfo__item">
+            <!-- .name: 스타일링을 위한 클래스명을 추가하였습니다. -->
+            <div class="userInfo__item name">
               <dt class="a11yHidden">사용자 이름</dt>
               <dd>박선우</dd>
             </div>
-            <div class="userInfo__item">
+            <!-- .email: 스타일링을 위한 클래스명을 추가하였습니다. -->
+            <div class="userInfo__item email">
               <dt class="a11yHidden">사용자 이메일</dt>
-              <dd>asdfqw@mail.com</dd>
+              <dd>
+                <!-- 가상 이메일이지만 이메일 영역이라서 <a>로 감쌌습니다. -->
+                <a href="mailto:asdfqw@mail.com">asdfqw@mail.com</a>
+              </dd>
             </div>
           </dl>
         </figcaption>
       </figure>
 
-      <!-- 카테고리태그시작 -->
-      <nav class="category">
-        <h3 class="a11yHidden">마이 페이지 카테고리</h3>
-        <ul class="category__list">
-          <li class="category__item">
-            <button type="button" class="category__btn is--active">최근</button>
-          </li>
-          <li class="category__item">
-            <button type="button" class="category__btn">좋아요</button>
-          </li>
-          <li class="category__item">
-            <button type="button" class="category__btn">나중에 볼 영상</button>
-          </li>
-        </ul>
-      </nav>
-      <!-- 카테고리 끝 -->
+      <!-- <nav>를 <section> 안으로 위치를 변경하고 .live 대신 .mypage__section으로 이름을 변경했습니다. -->
+      <section class="section mypage__section">
+        <nav class="category">
+          <h3 class="a11yHidden">마이 페이지 카테고리</h3>
+          <ul class="category__list">
+            <li class="category__item">
+              <button type="button" class="category__btn is--active">
+                최근
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn">좋아요</button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn">
+                나중에 볼 영상
+              </button>
+            </li>
+          </ul>
+        </nav>
 
-      <!-- 지금 방송중 영상리스트 시작 -->
-      <section class="section live">
         <header class="section__header">
-          <!-- 영상이 많을 떄 다 보여주고 전체 삭제를 할지 알려주는 것보다 영상 갯수를 알려주고 삭제할건지 먼저 물어보는게 낫다고 생각해서 최근본 영상과 전체삭제를 같은 곳에 묶어두었습니다.  -->
-          <h2 class="section__title">최근 본 영상</h2>
-          <small class="section__small">300</small>
+          <!-- 영상이 많을 떄 다 보여주고 전체 삭제를 할지 알려주는 것보다 영상 갯수를 알려주고 삭제할건지 먼저 물어보는게 낫다고 생각해서 최근본 영상과 전체삭제를 같은 곳에 묶어두었습니다. -> 오 좋습니다! -->
+          <h4 class="section__title">최근 본 영상</h4>
+           <!-- small 보다는 amount가 조금더 시멘틱하게 느껴져서 클래스명을 변경했습니다. + aria-label로 상세 정보 기입했습니다. -->
+          <small class="section__amount" aria-label="300개">300</small>
           <button type="button" class="button button--ghost">전체 삭제</button>
         </header>
-        <div class="section__content">
-          <article class="card">
+        <!-- role 추가 했습니다. -->
+        <div class="section__content" role="list">
+          <!-- role 추가 했습니다. -->
+          <article class="card" role="listitem">
             <figure class="card__figure">
               <div class="card__img">
                 <img src="" alt="" />
@@ -189,9 +205,15 @@
                 </dl>
               </figcaption>
             </figure>
+            <!-- 버튼 추가 했습니다. -->
+            <button
+              type="button"
+              class="icon icon--more"
+              aria-label="이 영상을 최근 본 영상에서 삭제하기"
+            ></button>
           </article>
         </div>
       </section>
-    </section>
+    </main>
   </body>
 </html>
